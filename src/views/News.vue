@@ -1,11 +1,18 @@
 <template>
-  <div id="app" class="small-container">
-    <h1>News Page</h1>
-  </div>
+    <div class="container" id="News">
+    <NewsSocialData/>
+    </div>
 </template>
 
-
 <script>
+import NewsSocialData from "@/components/NewsData.vue";
+
+export default {
+  name: "News",
+  components: {
+    NewsSocialData
+  }
+};
 </script>
 
 <style>
