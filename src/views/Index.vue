@@ -3,7 +3,7 @@
 
     <div class="banner-container">
       <div class="banner-wrap">
-        <img src="../assets/18980.jpg" alt="banner img">
+        <!-- <img src="../assets/18980.jpg" alt="banner img"> -->
       </div>
     </div>
 
