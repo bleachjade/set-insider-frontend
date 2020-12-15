@@ -69,15 +69,11 @@ export default {
     onChange() {
       this.isOpen = true;
     },
-    setResult(result) {
-      console.log(result)
-      this.search = result;
-      this.isOpen = false;
-    },
   },
    watch: {
       $route() {
-          this.search = this.path
+          this.search = this.path;
+          this.isOpen = false;
       }
     }
 };
