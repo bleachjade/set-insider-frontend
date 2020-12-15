@@ -1,6 +1,9 @@
 <template>
   <div class="container" id="CandleStick">
+    <div v-if="series == []"></div>
+    <div v-else>
     <VueApexCharts type="candlestick" height="350" :options="chartOptions" :series="series"></VueApexCharts>
+    </div>
   </div>
 </template>
 
@@ -16,6 +19,7 @@ export default {
   props: {
       series: Array,
       chartOptions: Object,
+      symbol: String
   }
 };
 </script>

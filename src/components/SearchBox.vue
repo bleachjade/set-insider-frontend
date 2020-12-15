@@ -1,0 +1,137 @@
+<template>
+  <div class="container" id="inputbox">
+    <div class="autocomplete">
+      <input class="box" type="text" v-model="search" @input="onChange" placeholder="Search Symbol" />
+      <div v-if="search != ''">
+        <ul v-show="isOpen" class="autocomplete-results">
+          <router-link
+            :to="{name: 'StockSymbol', params: { symbol: symbol  },}"
+            v-for="symbol in filteredList"
+            :key="symbol"
+            tag="li"
+            class="autocomplete-result"
+          >{{symbol}}</router-link>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "input-box",
+  data() {
+    return {
+      isOpen: false,
+      search: "",
+      symbols: [],
+    };
+  },
+  props: {
+    path: String,
+  },
+  computed: {
+    filteredList() {
+      let result = this.symbols.filter(symbol => {
+        return symbol.toLowerCase().includes(this.search.toLowerCase());
+      });
+      let i;
+      if (result.length >= 5) {
+        i = 5;
+      } else {
+        i = result.length;
+      }
+      return result.slice(0, i);
+    }
+  },
+  beforeCreate() {
+    axios
+      .get("http://localhost:3001/stock/symbol")
+      .then(response => (this.symbols = response.data.result))
+      .catch(error => console.log(error));
+  },
+  mounted() {
+    document.addEventListener('click', this.handleClickOutside);
+  },
+  destroyed() {
+    document.removeEventListener('click', this.handleClickOutside);
+  },
+
+  methods: {
+    handleClickOutside(evt) {
+      if (!this.$el.contains(evt.target)) {
+        this.isOpen = false;
+        this.arrowCounter = -1;
+      }
+    },
+    onChange() {
+      this.isOpen = true;
+    },
+    setResult(result) {
+      console.log(result)
+      this.search = result;
+      this.isOpen = false;
+    },
+  },
+   watch: {
+      $route() {
+          this.search = this.path
+      }
+    }
+};
+</script>
+
+<style>
+.autocomplete {
+  position: relative;
+  width: 25%;
+  z-index: 1000;
+  margin: 20px;
+}
+
+.autocomplete-results {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #eeeeee;
+  background: #ffffff;
+  height: auto;
+  overflow: auto;
+  width: 100%;
+  position: absolute;
+}
+
+.autocomplete-results li {
+  list-style: none;
+  text-align: left;
+  padding: 10px 40px 10px 20px;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+  position: relative;
+}
+
+.autocomplete-results li:hover {
+  background-color: #4aae9b;
+  color: white;
+}
+
+.autocomplete-results li:last-of-type {
+  border-bottom: none;
+}
+
+.box {
+  margin-bottom: 0px;
+}
+
+.chart {
+  text-align: center;
+}
+
+.home {
+  text-align: center;
+}
+</style>
+
