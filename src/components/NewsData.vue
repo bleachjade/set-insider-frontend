@@ -1,14 +1,27 @@
 <template>
   <div class="container" id="News">
-      <h1>All News</h1>
+      <h1>Social Media News</h1>
+      <main>
       <ul id="NewsSocialData" class="demo">
-          <div v-for="data in all_data" v-bind:key="data.id">
-            <li v-for="(value, name) in data" v-bind:key="value.id">
-            {{ name }}: {{ value }}
+          <ol class="gradient-list">
+          <div v-for="data in all_data" v-bind:key="data.id" class="container1">
+            <li>
+             Date Published: {{ data.date }}
+            </li>
+            <li>
+             Name: {{ data.name }}
+            </li>
+            <li>
+             News Link: <a v-bind:href=" data.link "> {{ data.link }} </a>
+            </li>
+            <li>
+             ID: {{ data.id }} 
             </li>
             <p>   </p>
           </div>
+          </ol>
         </ul>
+      </main>
   </div>
 </template>
 
@@ -43,7 +56,23 @@ export default {
   text-align: center;
 }
 
+.h1 {
+  text-align: center;
+}
+
 .p {
     text-align: center;
 }
+
+.container1 {
+  width: auto;
+  height: auto;
+  background-color: grey;
+  color: #fff;
+  padding: 20px;
+  position: relative;
+  margin: 40px;
+  border-radius: 25px;
+}
+@import "../assets/css/NewsList.scss";
 </style>
