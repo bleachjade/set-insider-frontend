@@ -10,7 +10,10 @@
                 
                 <div class="preview-price">
                     <h3 id="closePriceTitle">closePrice</h3>
-                    <h3 id="closePrice">41</h3>
+                    <h3 id="closePrice">41
+                        <i class="fa fa-angle-double-up" style="font-size:48px;color:red" v-if="closePrice < openPrice"></i>
+                        <i class="fa fa-angle-double-up" style="font-size:48px;color:lightgreen" v-else></i>
+                    </h3>
                 </div>
                 
             </div>
@@ -42,6 +45,8 @@
 </template>
 
 <style scoped>
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
 div {
     font-family: Arial, Helvetica, sans-serif;
 }
