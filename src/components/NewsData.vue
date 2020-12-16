@@ -1,7 +1,14 @@
 <template>
   <div class="container" id="News">
       <h1>All News</h1>
-      <p> {{ all_data }} </p>
+      <ul id="NewsSocialData" class="demo">
+          <div v-for="data in all_data" v-bind:key="data.id">
+            <li v-for="(value, name) in data" v-bind:key="value.id">
+            {{ name }}: {{ value }}
+            </li>
+            <p>   </p>
+          </div>
+        </ul>
   </div>
 </template>
 
