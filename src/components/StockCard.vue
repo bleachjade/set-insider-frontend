@@ -46,7 +46,7 @@ div {
     font-family: Arial, Helvetica, sans-serif;
 }
 .stock-container {
-    width: 50%;
+    width: 60%;
     border-radius: 2em;
     overflow: hidden;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
@@ -60,7 +60,7 @@ div {
     text-align: center;
     display: flex;
     flex-direction: column;
-    background-color: brown;
+    background-color: lightsalmon;
 }
 .stock-preview h2 {
     font-size: 2.6em;
@@ -69,8 +69,24 @@ div {
 .stock-preview h3 {
     color: white;
 }
+.stock-preview .preview-price {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
 .stock-info {
     padding-left: 2em;
     width: 40%;
 }
+.stock-info .preview-info {
+    display: flex;
+    justify-content: space-between;
+}
+@media (min-width: 600px){
+h1:not(:first-child), h2:not(:first-child), h3:not(:first-child) {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    }
+    }
 </style>
