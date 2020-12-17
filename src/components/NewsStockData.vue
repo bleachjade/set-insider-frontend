@@ -1,12 +1,14 @@
 <template>
   <div class="container" id="News">
-      <h1>Social Media News</h1>
+      <h1>Stock Official News</h1>
       <main>
-      <ul id="NewsSocialData" class="demo">
-          <ol class="gradient-list">
+      <ul id="NewsStockData" class="demo">
           <div v-for="data in all_data" v-bind:key="data.id" class="container1">
             <li>
              Date Published: {{ data.date }}
+            </li>
+            <li>
+             News Source: {{ data.source }}
             </li>
             <li>
              Name: {{ data.name }}
@@ -17,9 +19,7 @@
             <li>
              ID: {{ data.id }} 
             </li>
-            <p>   </p>
           </div>
-          </ol>
         </ul>
       </main>
   </div>
@@ -29,7 +29,7 @@
 import axios from "axios";
 
 export default {
-    name: "NewsSocialData",
+    name: "NewsStockData",
     components: {},
     data(){
         return {
@@ -38,7 +38,7 @@ export default {
     },
     beforeMount() {
         axios
-            .get("http://localhost:3001/stock/socialmedia-news?symbol=ACAP")
+            .get("http://localhost:3001/stock/official-news?symbol=ACAP")
             .then(response => this.preparedData(response.data.result));
         },
     methods: {
@@ -56,8 +56,9 @@ export default {
   text-align: center;
 }
 
-.h1 {
+h1 {
   text-align: center;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 .p {
@@ -71,7 +72,7 @@ export default {
   color: #fff;
   padding: 20px;
   position: relative;
-  margin: 40px;
+  margin: 0px;
   border-radius: 25px;
 }
 @import "../assets/css/NewsList.scss";
