@@ -70,12 +70,12 @@ export default {
       this.isOpen = true;
     },
   },
-   watch: {
-      $route() {
-          this.search = this.path;
-          this.isOpen = false;
-      }
+  watch: {
+    $route() {
+      this.search = this.path;
+      this.isOpen = false;
     }
+  }
 };
 </script>
 
