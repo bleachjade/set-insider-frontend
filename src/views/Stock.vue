@@ -3,12 +3,24 @@
     <InputBox :path="this.$route.params.symbol" />
     <StockCard />
     <CandleStick :id="this.$route.params.symbol" :series="series" :chartOptions="chartOptions" />
+    <CandleStick />
+    <div>
+      <div id="parent_div_1">
+        <NewsSocialData />
+      </div>
+
+      <div id="parent_div_2">
+        <NewsStockData />
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import CandleStick from "@/components/CandleStick.vue";
 import InputBox from "@/components/SearchBox.vue";
 import StockCard from "@/components/StockCard.vue";
+import NewsSocialData from "@/components/NewsSocialData.vue";
+import NewsStockData from "@/components/NewsStockData.vue";
 import dayjs from "dayjs";
 import axios from "axios";
 
@@ -17,7 +29,9 @@ export default {
   components: {
     CandleStick,
     StockCard,
-    InputBox
+    InputBox,
+    NewsSocialData,
+    NewsStockData
   },
   data() {
     return {
@@ -118,6 +132,25 @@ export default {
 
 .container {
   display: -moz-box;
+}
+#parent_div_1 {
+  width: 550px;
+  height: auto;
+  border: 10px solid black;
+  margin-left: 0px;
+  float: left;
+  border-radius: 25px;
+  background-color: silver;
+}
+
+#parent_div_2 {
+  width: 550px;
+  height: auto;
+  border: 10px solid black;
+  margin-right: 10px;
+  float: right;
+  border-radius: 25px;
+  background-color: silver;
 }
 </style>
 
