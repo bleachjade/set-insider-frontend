@@ -1,12 +1,14 @@
 <template>
   <div class="container" id="Stock">
     <InputBox :path="this.$route.params.symbol" />
+    <StockCard />
     <CandleStick :id="this.$route.params.symbol" :series="series" :chartOptions="chartOptions" />
   </div>
 </template>
 <script>
 import CandleStick from "@/components/CandleStick.vue";
 import InputBox from "@/components/SearchBox.vue";
+import StockCard from "@/components/StockCard.vue";
 import dayjs from "dayjs";
 import axios from "axios";
 
@@ -14,6 +16,7 @@ export default {
   name: "stock",
   components: {
     CandleStick,
+    StockCard,
     InputBox
   },
   data() {
@@ -111,6 +114,10 @@ export default {
 
 .home {
   text-align: center;
+}
+
+.container {
+  display: -moz-box;
 }
 </style>
 
