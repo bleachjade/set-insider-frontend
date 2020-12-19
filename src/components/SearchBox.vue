@@ -48,7 +48,7 @@ export default {
   },
   beforeCreate() {
     axios
-      .get("http://localhost:3001/stock/symbol")
+      .get("https://set-insider-backend.herokuapp.com/stock/symbol")
       .then(response => (this.symbols = response.data.result))
       .catch(error => console.log(error));
   },

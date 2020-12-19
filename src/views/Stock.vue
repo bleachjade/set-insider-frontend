@@ -1,20 +1,19 @@
 <template>
     <div class="container" id="Stock">
         <InputBox :path="this.$route.params.symbol" />
-        <StockCard :lastestData="this.lastestData" :symbol="this.symbol"/>
+        <StockCard :lastestData="this.lastestData" :symbol="this.symbol" />
         <CandleStick
             :id="this.$route.params.symbol"
             :series="series"
             :chartOptions="chartOptions"
         />
-        <CandleStick />
         <div>
             <div id="parent_div_1">
-                <NewsSocialData />
+                <NewsSocialData :datas="this.data_socials"/>
             </div>
 
             <div id="parent_div_2">
-                <NewsStockData />
+                <NewsStockData :datas="this.data_officials" />
             </div>
         </div>
     </div>
@@ -27,6 +26,8 @@ import NewsSocialData from "@/components/NewsSocialData.vue";
 import NewsStockData from "@/components/NewsStockData.vue";
 import dayjs from "dayjs";
 import axios from "axios";
+
+const link = "https://set-insider-backend.herokuapp.com";
 
 export default {
     name: "stock",
@@ -43,22 +44,39 @@ export default {
             chartOptions: {},
             lastestData: {},
             symbol: "",
+            data_officials: [],
+            data_socials: []
         };
     },
     beforeRouteUpdate(to, from, next) {
         if (typeof from.params.symbol != undefined) {
             this.symbol = to.params.symbol;
+
             axios
                 .get(
-                    `http://localhost:3001/stock/price?symbol=${to.params.symbol}`,
+                    `${link}/stock/price?symbol=${to.params.symbol}`,
                 )
                 .then((response) => {
-                    console.log(response.data.result)
+                    console.log(response.data.result);
                     if (response.data.result != undefined) {
                         this.preparedChartData(response.data.result);
                     }
                 })
                 .catch((error) => console.log(error));
+
+            axios
+                .get(
+                    `${link}/stock/official-news?symbol=${to.params.symbol}`,
+                )
+                .then(
+                    (response) => (this.data_officials = response.data.result),
+                );
+
+            axios
+                .get(
+                    `${link}/stock/socialmedia-news?symbol=${to.params.symbol}`,
+                )
+                .then((response) => this.data_socials = response.data.result);
         }
 
         next();
