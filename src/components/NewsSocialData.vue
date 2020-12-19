@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="News">
+  <div id="News">
       <h1>Stock Social Media News</h1>
       <main>
       <ul id="NewsSocialData" class="demo">

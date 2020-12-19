@@ -73,11 +73,13 @@ div {
     font-family: Arial, Helvetica, sans-serif;
 }
 .stock-container {
-    width: 60%;
+    width: 100%;
     border-radius: 2em;
     overflow: hidden;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     margin: 2em;
+    flex-wrap: wrap;
+
 }
 .stock-wrap {
     display: flex;

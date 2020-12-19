@@ -1,14 +1,24 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/stock">Stock</router-link> |
-      <router-link to="/news">News</router-link>
+      <div>
+         <router-link to="/stock"><h2>Stock</h2></router-link>
+      </div>
+      <InputBox :path="this.$route.params.symbol" />
     </div>
     <router-view/>
   </div>
 </template>
 
+<script >
+import InputBox from "@/components/SearchBox.vue";
+export default {
+    name: "nav-bar",
+    components: {
+        InputBox,
+    },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -18,9 +28,11 @@
 }
 
 #nav {
-  padding: 30px;
-  text-align: center;
+  display:flex;
+  padding: 20px;
+  align-items: center;
   width: 100%;
+  justify-content: space-around;
 }
 
 #nav a {

@@ -1,12 +1,12 @@
 <template>
-    <div class="container" id="News">
+    <div id="News">
         <h1>Stock Official News</h1>
         <main>
             <ul id="NewsStockData" class="demo">
                 <div
                     v-for="data in datas"
                     v-bind:key="data.id"
-                    class="container1"
+                    class="container1 container"
                 >
                     <li>Date Published: {{ data.date }}</li>
                     <li>News Source: {{ data.source }}</li>
@@ -23,14 +23,13 @@
 </template>
 
 <script>
-
 export default {
     name: "NewsStockData",
     components: {},
     props: {
-      datas: Array
+        datas: Array,
     },
-  }
+};
 </script>
 
 <style>
@@ -48,6 +47,7 @@ h1 {
 }
 
 .container1 {
+    flex-wrap: wrap;
     width: auto;
     height: auto;
     background-color: grey;

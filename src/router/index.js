@@ -17,12 +17,6 @@ const routes = [{
             import ('../views/Stock.vue')
     },
     {
-        path: '/news',
-        name: 'Employee',
-        component: () =>
-            import ('../views/News.vue')
-    },
-    {
         path: '/stock/:symbol',
         name: 'StockSymbol',
         component: () =>

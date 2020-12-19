@@ -1,26 +1,23 @@
 <template>
     <div class="container" id="Stock">
-        <InputBox :path="this.$route.params.symbol" />
-        <StockCard :lastestData="this.lastestData" :symbol="this.symbol" />
-        <CandleStick
-            :id="this.$route.params.symbol"
-            :series="series"
-            :chartOptions="chartOptions"
-        />
-        <div>
-            <div id="parent_div_1">
-                <NewsSocialData :datas="this.data_socials"/>
-            </div>
-
-            <div id="parent_div_2">
-                <NewsStockData :datas="this.data_officials" />
-            </div>
+        <div class="flex-row">
+        <div class="flex-small third-fourht">
+            <StockCard :lastestData="this.lastestData" :symbol="this.symbol" />
+            <CandleStick
+                :id="this.$route.params.symbol"
+                :series="series"
+                :chartOptions="chartOptions"
+            />
         </div>
+        <div class="flex-small  one-fourht">
+            <NewsStockData :datas="this.data_officials" />
+        </div>
+        </div>
+        <NewsSocialData :datas="this.data_socials" />
     </div>
 </template>
 <script>
 import CandleStick from "@/components/CandleStick.vue";
-import InputBox from "@/components/SearchBox.vue";
 import StockCard from "@/components/StockCard.vue";
 import NewsSocialData from "@/components/NewsSocialData.vue";
 import NewsStockData from "@/components/NewsStockData.vue";
@@ -34,7 +31,6 @@ export default {
     components: {
         CandleStick,
         StockCard,
-        InputBox,
         NewsSocialData,
         NewsStockData,
     },
@@ -45,7 +41,7 @@ export default {
             lastestData: {},
             symbol: "",
             data_officials: [],
-            data_socials: []
+            data_socials: [],
         };
     },
     beforeRouteUpdate(to, from, next) {
@@ -53,9 +49,7 @@ export default {
             this.symbol = to.params.symbol;
 
             axios
-                .get(
-                    `${link}/stock/price?symbol=${to.params.symbol}`,
-                )
+                .get(`${link}/stock/price?symbol=${to.params.symbol}`)
                 .then((response) => {
                     console.log(response.data.result);
                     if (response.data.result != undefined) {
@@ -65,9 +59,7 @@ export default {
                 .catch((error) => console.log(error));
 
             axios
-                .get(
-                    `${link}/stock/official-news?symbol=${to.params.symbol}`,
-                )
+                .get(`${link}/stock/official-news?symbol=${to.params.symbol}`)
                 .then(
                     (response) => (this.data_officials = response.data.result),
                 );
@@ -76,7 +68,7 @@ export default {
                 .get(
                     `${link}/stock/socialmedia-news?symbol=${to.params.symbol}`,
                 )
-                .then((response) => this.data_socials = response.data.result);
+                .then((response) => (this.data_socials = response.data.result));
         }
 
         next();
