@@ -78,7 +78,8 @@ div {
     font-family: Arial, Helvetica, sans-serif;
 }
 .stock-container {
-    width: 100%;
+    justify-content: center;
+    width: 90%;
     border-radius: 2em;
     overflow: hidden;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
@@ -91,7 +92,7 @@ div {
     width: 100%;
 }
 .stock-preview {
-    width: 20em;
+    width: 25em;
     text-align: center;
     display: flex;
     flex-direction: column;
