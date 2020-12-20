@@ -1,6 +1,6 @@
-# SET Insider Frontend
+# SWIFT SET Insider Frontend
 
-Software Process and Project Management Final Project
+Data Aquisition and Integration Final Project
 
 ## Members
 
