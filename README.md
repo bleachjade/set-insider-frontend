@@ -1,6 +1,22 @@
-# ske_product_frontend
+# SET Insider Frontend
 
-## Project setup
+Software Process and Project Management Final Project
+
+## Members
+
+- Patteera Likitamnuayporn 6110545597
+- Siwat Ponpued 6110546640
+- Pawaris Wongsalung 6110545562
+- Thun Thunkijjanukij 6110545546
+- Nattapol Boonyapornpong 6110545503
+
+## Prerequisite
+
+| Name       | version                                                       |
+| ---------- | ------------------------------------------------------------- |
+| Node       | [10.6.3 or above](https://nodejs.org/en/download/releases/)   |
+
+## Project Setup
 ```
 npm install
 ```
