@@ -1,6 +1,6 @@
 # SWIFT SET Insider Frontend
 
-Data Aquisition and Integration Final Project
+Data Acquisition and Integration Final Project
 
 ## Members
 
