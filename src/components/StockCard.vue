@@ -13,14 +13,19 @@
                     <h3 id="closePrice">
                         {{ lastestData.closePrice }}
                         <i
-                            class="fa fa-angle-double-up"
-                            style="font-size:48px;color:red"
-                            v-if="closePrice < openPrice"
+                            class="fa fa-angle-double-down"
+                            style="font-size:48px;color:red;margin:0.1em"
+                            v-if="lastestData.closePrice < lastestData.openPrice"
                         ></i>
                         <i
                             class="fa fa-angle-double-up"
-                            style="font-size:48px;color:lightgreen"
-                            v-else
+                            style="font-size:48px;color:lightgreen;margin:0.1em"
+                            v-if="lastestData.closePrice > lastestData.openPrice"
+                        ></i>
+                        <i
+                            class="fa fa-minus"
+                            style="font-size:48px;color:lightgrey;margin:0.1em"
+                            v-if="lastestData.closePrice == lastestData.openPrice"
                         ></i>
                     </h3>
                 </div>
@@ -83,6 +88,7 @@ div {
 }
 .stock-wrap {
     display: flex;
+    width: 100%;
 }
 .stock-preview {
     width: 20em;
