@@ -133,6 +133,7 @@ export default {
 
 .box {
     margin-bottom: 0px;
+    color: white;
 }
 
 .chart {
