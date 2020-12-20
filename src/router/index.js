@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
-        name: 'Vue_about',
+        name: 'Index',
         component: () =>
             import ('../views/Index.vue')
     },
