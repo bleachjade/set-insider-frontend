@@ -9,11 +9,11 @@
                 :chartOptions="chartOptions"
             />
         </div>
-        <div class="flex-small  one-fourht">
+        <div class="flex-small one-fourht news-container">
             <NewsStockData :datas="this.data_officials" />
+            <NewsSocialData :datas="this.data_socials" />
         </div>
         </div>
-        <NewsSocialData :datas="this.data_socials" />
     </div>
 </template>
 <script>
@@ -135,6 +135,9 @@ export default {
             };
         },
     },
+    created() {
+        this.preparedChartData();
+    }
 };
 </script>
 
@@ -148,7 +151,8 @@ export default {
 }
 
 .container {
-    display: -moz-box;
+    display: flex;
+    flex-direction: column;
 }
 #parent_div_1 {
     width: 550px;
@@ -168,5 +172,8 @@ export default {
     float: right;
     border-radius: 25px;
     background-color: silver;
+}
+.news-container {
+    display: flex;
 }
 </style>
