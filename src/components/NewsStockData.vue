@@ -38,6 +38,7 @@ div {
 a {
     text-decoration: none;
     color: lightgoldenrodyellow;
+    word-break: break-word;
 }
 a:hover {
     color: lightcyan;
