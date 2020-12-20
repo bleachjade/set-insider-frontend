@@ -15,7 +15,6 @@
                         News Link:
                         <a v-bind:href="data.link"> {{ data.link }} </a>
                     </li>
-                    <li>ID: {{ data.id }}</li>
                 </div>
             </ul>
         </main>
@@ -33,13 +32,22 @@ export default {
 </script>
 
 <style>
+div {
+    font-family: Arial, Helvetica, sans-serif;
+}
+a {
+    text-decoration: none;
+    color: lightgoldenrodyellow;
+}
+a:hover {
+    color: lightcyan;
+}
 .home {
     text-align: center;
 }
 
 h1 {
     text-align: center;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 .p {
@@ -47,15 +55,16 @@ h1 {
 }
 
 .container1 {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
     flex-wrap: wrap;
     width: auto;
     height: auto;
-    background-color: grey;
+    background-color: lightskyblue;
     color: #fff;
-    padding: 20px;
-    position: relative;
-    margin: 0px;
-    border-radius: 25px;
+    padding: 2.5em;
+    margin: 1em;
+    border-radius: 1.5em;
 }
 @import "../assets/css/NewsList.scss";
 </style>
