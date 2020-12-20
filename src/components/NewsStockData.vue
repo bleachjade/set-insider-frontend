@@ -35,6 +35,13 @@ export default {
 div {
     font-family: Arial, Helvetica, sans-serif;
 }
+div #News {
+    overflow: scroll;
+    height: 80vh;
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
 a {
     text-decoration: none;
     color: lightgoldenrodyellow;
